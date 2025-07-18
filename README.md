@@ -79,7 +79,19 @@ score = (
     - 100 * liquidation_count
     + 100
 )
+
 ```
+
+### Scoring Component Breakdown
+
+| Component                   | Weight     | Role           | Reason                                                                                    |
+|----------------------------|------------|----------------|-------------------------------------------------------------------------------------------|
+| `+ 0.4 * repay_usd`         | 0.4        | Reward         | More repayment means more trustworthiness. This is given the **highest positive weight**. |
+| `- 0.3 * borrow_usd`        | 0.3        | Penalty        | Borrowing increases exposure to risk if not repaid. It's penalized, but not too heavily.  |
+| `+ 0.2 * deposit_usd`       | 0.2        | Reward         | Depositing shows commitment and capital. It’s rewarded, but less than repayment.          |
+| `- 100 * liquidation_count` | 100        | Strong Penalty | Getting liquidated is a major risk indicator, so a **high penalty** is used.              |
+| `+ 100`                     | base score | Buffer/offset  | Ensures scores start above zero even with no history.                                     |
+
 The final score is clipped between 0 and 1000:
 ```
 score = min(1000, max(0, round(score)))
