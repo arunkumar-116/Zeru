@@ -146,5 +146,26 @@ R² Score: 0.95
 
 These metrics indicate that the model accurately approximates the synthetic scoring logic.
 
+## Extensibility
+This pipeline is designed to be easily extended:
+
+Add new features such as:
+
+- Token holding duration
+
+- Flash loan usage
+
+- Interest earned or paid
+
+- Replace synthetic scores with real-world loan repayment outcomes if available
+
+- Tune hyperparameters or try alternative models (e.g., XGBoost, LightGBM)
+
+- Convert this into an API or real-time scoring service
+
+- Visualize results using dashboards or integrate with on-chain analytics tools
+
+
+
 
 
